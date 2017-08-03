@@ -45,6 +45,7 @@
         android:background="@android:color/white"
         android:scaleType="center"
         android:src="@drawable/loading_data_anim"/>
+    
     <ListView
         android:id="@+id/list_view"
         android:layout_width="match_parent"
