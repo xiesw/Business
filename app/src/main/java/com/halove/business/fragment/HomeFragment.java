@@ -1,5 +1,7 @@
 package com.halove.business.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,11 +12,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.halove.business.Constant;
 import com.halove.business.R;
 import com.halove.business.adapter.HomeListAdapter;
 import com.halove.business.base.BaseFragment;
 import com.halove.business.entity.recommand.BaseRecommandEntity;
 import com.halove.business.net.http.RequestCenter;
+import com.halove.business.zxing.app.CaptureActivity;
 import com.halove.core.okhttp.listener.DisposeDataListener;
 
 /**
@@ -23,6 +27,8 @@ import com.halove.core.okhttp.listener.DisposeDataListener;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private static final String TAG = BaseFragment.class.getSimpleName();
+
+    public static final int REQUEST_QRCORD = 0x01;
 
     /**
      * ui
@@ -68,7 +74,35 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        switch(view.getId()) {
+            case R.id.qrcode_view:
+                if (hasPermission(Constant.HARDWEAR_CAMERA_PERMISSION)) {
+                    doOpenCamera();
+                } else {
+                    requestPermission(Constant.HARDWEAR_CAMERA_CODE, Constant.HARDWEAR_CAMERA_PERMISSION);
+                }
+                break;
+        }
+    }
 
+    public void doOpenCamera() {
+        Intent intent = new Intent(getActivity(), CaptureActivity.class);
+        startActivityForResult(intent, REQUEST_QRCORD);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case REQUEST_QRCORD:
+                // 扫码处理逻辑
+                if(resultCode == Activity.RESULT_OK) {
+                    String result = data.getStringExtra("SCAN_RESULT");
+                    // TODO: 2017/8/4 使用浏览器打开返回的连接
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     // 推荐产品数据请求

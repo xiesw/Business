@@ -1,4 +1,4 @@
-package com.halove.business;
+package com.halove.business.activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.halove.business.R;
 import com.halove.business.base.BaseActivity;
 import com.halove.business.fragment.HomeFragment;
 import com.halove.business.fragment.MessageFragment;

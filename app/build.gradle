@@ -29,4 +29,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':core')
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile files('libs/zxing.jar')
 }
