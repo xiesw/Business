@@ -58,7 +58,7 @@ public class ImageLoaderManager {
      * @param context
      * @return
      */
-    public ImageLoaderManager getInstance(Context context) {
+    public static ImageLoaderManager getInstance(Context context) {
         if(mInstance == null) {
             synchronized(ImageLoaderManager.class) {
                 if(mInstance == null) {

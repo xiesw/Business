@@ -13,8 +13,8 @@ public class DisposeDataHandle {
         mListener = listener;
     }
 
-    public DisposeDataHandle(DisposeDataListener listener, Class<?> aClass) {
+    public DisposeDataHandle(DisposeDataListener listener, Class<?> clazz) {
         mListener = listener;
-        mClass = aClass;
+        mClass = clazz;
     }
 }

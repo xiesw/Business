@@ -1,12 +1,9 @@
 package com.halove.core.okhttp;
 
-import com.halove.core.okhttp.https.HttpsUtils;
+import com.halove.core.okhttp.listener.DisposeDataHandle;
 import com.halove.core.okhttp.response.CommonJsonCallback;
 
 import java.util.concurrent.TimeUnit;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLSession;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -35,13 +32,13 @@ public class CommonOkhttpClient {
         okHttpBuilder.followRedirects(true);
 
         // https支持
-        okHttpBuilder.hostnameVerifier(new HostnameVerifier() {
+        /*okHttpBuilder.hostnameVerifier(new HostnameVerifier() {
             @Override
             public boolean verify(String s, SSLSession sslSession) {
                 return true;
             }
         });
-        okHttpBuilder.sslSocketFactory(HttpsUtils.getSslSocketFactory());
+        okHttpBuilder.sslSocketFactory(HttpsUtils.getSslSocketFactory());*/
 
         // 生成我们的client对象
         mOkHttpClient = okHttpBuilder.build();
@@ -50,15 +47,16 @@ public class CommonOkhttpClient {
     /**
      * 发送具体的http/https请求
      * @param request
-     * @param commonJsonCallback
+     * @param handle
      * @return Call
      */
-    public static Call sendRequset(Request request, CommonJsonCallback commonJsonCallback) {
+    public static Call get(Request request, DisposeDataHandle handle) {
 
         Call call = mOkHttpClient.newCall(request);
-        call.enqueue(commonJsonCallback);
+        call.enqueue(new CommonJsonCallback(handle));
 
         return call;
     }
+
 
 }

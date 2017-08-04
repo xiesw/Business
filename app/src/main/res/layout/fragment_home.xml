@@ -8,6 +8,7 @@
         android:layout_height="wrap_content"
         android:background="@color/color_fed952"
         android:padding="8dp">
+        
         <TextView
             android:id="@+id/qrcode_view"
             android:layout_width="wrap_content"
@@ -36,6 +37,7 @@
             android:text="@string/home_edittext_hint"
             android:textColor="@color/color_cdcdcd"
             android:textSize="16sp"/>
+        
     </RelativeLayout>
     
     <ImageView

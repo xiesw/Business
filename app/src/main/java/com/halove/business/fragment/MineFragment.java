@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.halove.business.R;
 import com.halove.business.base.BaseFragment;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by xieshangwu on 2017/8/3
  */
@@ -20,7 +22,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
 
     private View mContentView;
     private RelativeLayout mLoginLayout;
-    //private CircleImageView mPhotoView;
+    private CircleImageView mPhotoView;
     private TextView mLoginInfoView;
     private TextView mLoginView;
     private RelativeLayout mLoginedLayout;
@@ -45,8 +47,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         mLoginedLayout = (RelativeLayout) mContentView.findViewById(R.id.logined_layout);
         mLoginedLayout.setOnClickListener(this);
 
-        //mPhotoView = (CircleImageView) mContentView.findViewById(R.id.photo_view);
-        //mPhotoView.setOnClickListener(this);
+        mPhotoView = (CircleImageView) mContentView.findViewById(R.id.photo_view);
+        mPhotoView.setOnClickListener(this);
         mLoginView = (TextView) mContentView.findViewById(R.id.login_view);
         mLoginView.setOnClickListener(this);
         mVideoPlayerView = (TextView) mContentView.findViewById(R.id.video_setting_view);

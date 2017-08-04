@@ -24,8 +24,7 @@
         android:padding="20dp">
         
         
-        <!--<de.hdodenhof.circleimageview.CircleImageView-->
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/message_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,8 +66,7 @@
         android:layout_height="wrap_content"
         android:padding="15dp">
         
-        <!--<de.hdodenhof.circleimageview.CircleImageView-->
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/zan_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,8 +108,7 @@
         android:layout_height="wrap_content"
         android:padding="15dp">
         
-        <!--<de.hdodenhof.circleimageview.CircleImageView-->
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imooc_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

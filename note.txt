@@ -1,0 +1,5 @@
+待做事项
+1. okhttp封装重构
+2. imageLoader重构
+3. 首页
+4. 多item
