@@ -1,6 +1,7 @@
 package com.halove.business.net.http;
 
 import com.halove.business.entity.recommand.BaseRecommandEntity;
+import com.halove.business.entity.update.UpdateEntity;
 import com.halove.core.okhttp.CommonOkhttpClient;
 import com.halove.core.okhttp.listener.DisposeDataHandle;
 import com.halove.core.okhttp.listener.DisposeDataListener;
@@ -28,4 +29,12 @@ public class RequestCenter {
         RequestCenter.postRequest(HttpConstants.HOME_RECOMMAND, null, listener,
                 BaseRecommandEntity.class);
     }
+
+    /**
+     * 应用版本请求
+     */
+    public static void checkVersion(DisposeDataListener listener) {
+        RequestCenter.postRequest(HttpConstants.CHECK_UPDATE, null, listener, UpdateEntity.class);
+    }
+
 }

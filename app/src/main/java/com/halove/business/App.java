@@ -20,7 +20,7 @@ public class App extends Application {
         Logger.addLogAdapter(new AndroidLogAdapter());
     }
 
-    private static App getInstance() {
+    public static App getInstance() {
         return mApp;
     }
 }

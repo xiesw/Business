@@ -15,4 +15,6 @@ public class HttpConstants {
     //首页产品的请求地址
     public static final String HOME_RECOMMAND = ROOT_URL + "home_data.json";
 
+    //首页产品的请求地址
+    public static final String CHECK_UPDATE = ROOT_URL + "update.json";
 }
