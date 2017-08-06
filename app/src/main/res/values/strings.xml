@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ImoocBusiness</string>
     <string name="app_id">57c432ae</string>
-
+    
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main_list">MainListActivity</string>
@@ -47,7 +47,7 @@
     <string name="jpush_message_content">消息内容:</string>
     <string name="jpush_message_title">推送消息</string>
     <string name="video">视频</string>
-
+    
     <!-- QR_Code -->
     <string name="button_ok">OK</string>
     <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the
@@ -76,7 +76,7 @@
     <string name="preferences_supplemental_title">Retrieve more info</string>
     <string name="preferences_vibrate_title">Vibrate</string>
     <string name="preview_msg">&#160;preview pages available,click Download for more.</string>
-
+    
     <!--update模块-->
     <string name="update_title">快下载更新体验一下吧</string>
     <string name="update_new_version">您有新版本</string>
@@ -92,7 +92,7 @@
     <string name="confirm">确定</string>
     <string name="tian_qian">天前</string>
     <string name="dian_zan">点赞</string>
-
+    
     <!--引导页-->
     <string name="welcom_head_01">来慕课网学习吧</string>
     <string name="welcom_content_01">来慕课网你可以学到任何你想学的知识.</string>

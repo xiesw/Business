@@ -1,4 +1,4 @@
-package com.halove.business.utils;
+package com.halove.core.utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,7 +64,7 @@ public class ResponseEntityToModule {
             if(!jsonObj.has(name) || jsonObj.isNull(name)) {
                 continue;
             }
-            if(cls.isPrimitive() || isWrappedPrimitive(cls))// 锟斤拷锟斤拷腔锟斤拷锟斤拷锟斤拷锟絙oolean,byte,
+            if(cls.isPrimitive() || isWrappedPrimitive(cls))//
             // char,short,int,long,float,double,void
             {
                 setPrimitiveFieldValue(f, moduleObj, jsonObj.get(name));

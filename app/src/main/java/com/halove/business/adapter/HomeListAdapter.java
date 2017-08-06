@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.halove.business.R;
 import com.halove.business.entity.recommand.RecommandValue;
-import com.halove.business.utils.Utils;
 import com.halove.core.imageloader.ImageLoaderManager;
+import com.halove.core.utils.Utils;
 
 import java.util.ArrayList;
 

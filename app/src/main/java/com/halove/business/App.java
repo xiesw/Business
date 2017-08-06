@@ -2,6 +2,9 @@ package com.halove.business;
 
 import android.app.Application;
 
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
+
 /**
  * Created by xieshangwu on 2017/8/2
  */
@@ -14,6 +17,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         mApp = this;
+        Logger.addLogAdapter(new AndroidLogAdapter());
     }
 
     private static App getInstance() {

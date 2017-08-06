@@ -1,4 +1,4 @@
-package com.halove.business.utils;
+package com.halove.core.utils;
 
 import android.Manifest.permission;
 import android.content.Context;
@@ -15,6 +15,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.halove.core.SDKConstants;
 
 import java.io.ByteArrayInputStream;
 
@@ -66,7 +67,7 @@ public class Utils {
     }
 
     //decide can autoplay the ad
-    /*public static boolean canAutoPlay(Context context, AutoPlaySetting setting) {
+    public static boolean canAutoPlay(Context context, SDKConstants.AutoPlaySetting setting) {
         boolean result = true;
         switch(setting) {
             case AUTO_PLAY_3G_4G_WIFI:
@@ -84,7 +85,7 @@ public class Utils {
                 break;
         }
         return result;
-    }*/
+    }
 
     public static String getAppVersion(Context context) {
         String version = "1.0.0"; //默认1.0.0版本
