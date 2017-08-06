@@ -17,4 +17,6 @@ public class HttpConstants {
 
     //首页产品的请求地址
     public static final String CHECK_UPDATE = ROOT_URL + "update.json";
+
+    public static final String LOGIN = ROOT_URL + "user_info.json";
 }

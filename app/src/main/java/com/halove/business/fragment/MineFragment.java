@@ -1,8 +1,12 @@
 package com.halove.business.fragment;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +14,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.halove.business.R;
+import com.halove.business.activity.LoginActivity;
 import com.halove.business.activity.SettingActivity;
 import com.halove.business.base.BaseFragment;
 import com.halove.business.entity.update.UpdateEntity;
+import com.halove.business.manager.UserManager;
 import com.halove.business.net.http.RequestCenter;
 import com.halove.business.service.UpdateService;
 import com.halove.business.ui.Dialog.CommonDialog;
@@ -41,13 +47,22 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     private TextView mQrCodeView;
     private TextView mUpdateView;
 
+    private LoginBroadcastReceiver mReceiver = new LoginBroadcastReceiver();
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle
             savedInstanceState) {
         mContentView = inflater.inflate(R.layout.fragment_mine, container, false);
         initView();
+        registerLoginBroadcast();
         return mContentView;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterLoginBroadcast();
     }
 
     private void initView() {
@@ -82,6 +97,12 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.update_view:
                 checkVersion();
+                break;
+            case R.id.login_view:
+                getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+                break;
+            case R.id.my_qrcode_view:
+                // TODO: 2017/8/6 生成二维码
                 break;
             default:
                 break;
@@ -122,6 +143,30 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
 
             }
         });
+    }
+
+    private void registerLoginBroadcast() {
+        IntentFilter filter = new IntentFilter(LoginActivity.LOGIN_ACTION);
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mReceiver, filter);
+    }
+
+    private void unregisterLoginBroadcast() {
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mReceiver);
+    }
+
+    /**
+     * 自定义广播接收者, 用来处理我们的登陆广播
+     */
+    private class LoginBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            // 更新我们的Fragment的UI
+            mLoginLayout.setVisibility(View.GONE);
+            mLoginedLayout.setVisibility(View.VISIBLE);
+            mUserNameView.setText(UserManager.getInstance().getUser().data.name);
+            mTickView.setText(UserManager.getInstance().getUser().data.tick);
+        }
     }
 
 }

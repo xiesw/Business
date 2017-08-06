@@ -8,24 +8,33 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.halove.business.Constant;
 import com.halove.business.R;
+import com.halove.business.activity.PhotoViewActivity;
 import com.halove.business.adapter.HomeListAdapter;
 import com.halove.business.base.BaseFragment;
 import com.halove.business.entity.recommand.BaseRecommandEntity;
+import com.halove.business.entity.recommand.HeadEntity;
+import com.halove.business.entity.recommand.RecommandValue;
 import com.halove.business.net.http.RequestCenter;
 import com.halove.business.zxing.app.CaptureActivity;
 import com.halove.core.okhttp.listener.DisposeDataListener;
+import com.halove.core.ui.banner.BannerCreator;
+
+import java.util.ArrayList;
 
 /**
  * Created by xieshangwu on 2017/8/3
  */
 
-public class HomeFragment extends BaseFragment implements View.OnClickListener {
+public class HomeFragment extends BaseFragment implements View.OnClickListener, AdapterView
+        .OnItemClickListener {
     private static final String TAG = BaseFragment.class.getSimpleName();
 
     public static final int REQUEST_QRCORD = 0x01;
@@ -66,6 +75,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         mSearchView = (TextView) mContentView.findViewById(R.id.search_view);
         mSearchView.setOnClickListener(this);
         mListView = (ListView) mContentView.findViewById(R.id.list_view);
+        mListView.setOnItemClickListener(this);
         mLoadingView = (ImageView) mContentView.findViewById(R.id.loading_view);
         // 启动loading动画
         AnimationDrawable anim = (AnimationDrawable) mLoadingView.getDrawable();
@@ -134,8 +144,27 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             // 创建adapter
             mHomeListAdapter = new HomeListAdapter(getActivity(), mBaseRecommandEntity.data.list);
             mListView.setAdapter(mHomeListAdapter);
+
+            addHead();
         } else {
             showErrorView();
+        }
+    }
+
+    /**
+     * 添加头部ViewPager
+     */
+    @SuppressWarnings("unchecked")
+    private void addHead() {
+        if(mBaseRecommandEntity.data.head != null) {
+            HeadEntity headEntity = mBaseRecommandEntity.data.head;
+            ArrayList<String> urlList = headEntity.ads;
+            View headView = View.inflate(getActivity(), R.layout.item_home_head, null);
+            ConvenientBanner<String> convenientBanner = (ConvenientBanner<String>) headView
+                    .findViewById(R.id.banner_recycler_item);
+            BannerCreator.setDefault(convenientBanner, urlList, null);
+            mListView.addHeaderView(headView);
+
         }
     }
 
@@ -144,5 +173,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
      */
     private void showErrorView() {
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        RecommandValue value = mHomeListAdapter.getItem(position - mListView.getHeaderViewsCount());
+        if(value.type != 0) {
+            Intent intent = new Intent(getActivity(), PhotoViewActivity.class);
+            intent.putStringArrayListExtra(PhotoViewActivity.PHOTO_LIST, value.url);
+            startActivity(intent);
+
+        }
     }
 }

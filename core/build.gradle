@@ -31,7 +31,11 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-
     // logger
     compile 'com.orhanobut:logger:2.1.1'
+    //Banner
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    compile 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
+    //photoview浏览大图
+    compile 'com.github.chrisbanes.photoview:library:1.2.4'
 }

@@ -35,4 +35,6 @@ public class RecommandValue extends BaseEntity {
     public ArrayList<Monitor> clickMonitor;
     public EMEvent event;
 
+
+
 }

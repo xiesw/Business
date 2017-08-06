@@ -8,5 +8,7 @@ import java.util.ArrayList;
  */
 
 public class RecommandEntity {
+    public HeadEntity head;
     public ArrayList<RecommandValue> list;
+
 }

@@ -127,6 +127,12 @@ public class Utils {
         return displayMetrics;
     }
 
+    public static int getScreenWidth(Context context) {
+        DisplayMetrics displayMetrics = getDisplayMetrics(context);
+        int displayWidth = displayMetrics.widthPixels;
+        return displayWidth;
+    }
+
     public static BitmapDrawable decodeImage(String base64drawable) {
         byte[] rawImageData = Base64.decode(base64drawable, 0);
         return new BitmapDrawable(null, new ByteArrayInputStream(rawImageData));

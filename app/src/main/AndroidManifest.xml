@@ -22,7 +22,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".activity.HomeActivity"
             android:launchMode="singleTask"
@@ -31,7 +31,7 @@
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                
+    
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
@@ -42,7 +42,6 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"/>
-        
         <activity android:name=".activity.SettingActivity">
         </activity>
         
@@ -51,6 +50,11 @@
             android:enabled="true"
             android:exported="true">
         </service>
+        
+        <activity android:name=".activity.LoginActivity">
+        </activity>
+        <activity android:name=".activity.PhotoViewActivity">
+        </activity>
     </application>
 
 </manifest>

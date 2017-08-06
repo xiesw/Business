@@ -1,5 +1,6 @@
 package com.halove.business.net.http;
 
+import com.halove.business.entity.UserEntity;
 import com.halove.business.entity.recommand.BaseRecommandEntity;
 import com.halove.business.entity.update.UpdateEntity;
 import com.halove.core.okhttp.CommonOkhttpClient;
@@ -37,4 +38,13 @@ public class RequestCenter {
         RequestCenter.postRequest(HttpConstants.CHECK_UPDATE, null, listener, UpdateEntity.class);
     }
 
+    /**
+     * 登陆请求
+     */
+    public static void login(String userName, String passwd, DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        params.put("username", userName);
+        params.put("password", passwd);
+        RequestCenter.postRequest(HttpConstants.LOGIN, params, listener, UserEntity.class);
+    }
 }
