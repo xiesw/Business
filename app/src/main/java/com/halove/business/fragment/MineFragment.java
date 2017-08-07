@@ -1,5 +1,6 @@
 package com.halove.business.fragment;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -98,7 +99,13 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                 getActivity().startActivity(new Intent(getActivity(), SettingActivity.class));
                 break;
             case R.id.update_view:
-                checkVersion();
+                if(hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    // 拥有权限
+                    checkVersion();
+                } else {
+                    requestPermission(EXTERNAL_STORAGE_PERIMSSION, new String[]{Manifest
+                            .permission.WRITE_EXTERNAL_STORAGE});
+                }
                 break;
             case R.id.login_view:
                 getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
@@ -112,6 +119,11 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void doSDCard() {
+        checkVersion();
     }
 
     private void showShareDialog() {
