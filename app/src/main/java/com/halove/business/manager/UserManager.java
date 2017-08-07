@@ -32,7 +32,6 @@ public class UserManager {
         mUserInfo = null;
     }
 
-    @SuppressWarnings("RedundantConditionalExpression")
     public boolean hasLogin() {
         return (mUserInfo != null) ? true : false;
     }

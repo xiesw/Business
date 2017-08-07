@@ -1,6 +1,8 @@
 package com.halove.core.utils;
 
 import android.Manifest.permission;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -18,6 +20,7 @@ import android.view.WindowManager;
 import com.halove.core.SDKConstants;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
 
 /**
  * @author qndroid
@@ -165,6 +168,25 @@ public class Utils {
 
         if(source.contains(destation)) {
             return true;
+        }
+        return false;
+    }
+
+    /**
+     * 通过指定包名判断程序是否正在运行
+     * @param context
+     * @return
+     */
+    public static boolean getCurrentTask(Context context) {
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<RunningTaskInfo> appProcessInfos = activityManager.getRunningTasks(50);
+        for (RunningTaskInfo process : appProcessInfos) {
+
+            if (process.baseActivity.getPackageName().equals(context.getPackageName())
+                    || process.topActivity.getPackageName().equals(context.getPackageName())) {
+
+                return true;
+            }
         }
         return false;
     }

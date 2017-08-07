@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true">
     
-        <activity android:name="com.youdu.activity.AdBrowserActivity"/>
+        <activity android:name=".activity.AdBrowserActivity"/>
     </application>
 
 </manifest>

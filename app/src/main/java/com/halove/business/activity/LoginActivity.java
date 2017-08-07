@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.halove.business.R;
 import com.halove.business.entity.UserEntity;
+import com.halove.business.jpush.PushMessage;
+import com.halove.business.jpush.PushMessgeActivity;
 import com.halove.business.manager.UserManager;
 import com.halove.business.net.http.RequestCenter;
 import com.halove.core.okhttp.listener.DisposeDataListener;
@@ -25,11 +27,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText mUserNameView;
     private EditText mPasswordView;
     private TextView mLoginView;
+
+
+    /**
+     * data
+     */
+
+    private PushMessage mPushMessage;
+    private boolean mFromPush;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
+        initData();
+    }
+
+    private void initData() {
+        Intent intent = getIntent();
+        if(intent.hasExtra("pushMessage")) {
+            mPushMessage = (PushMessage) intent.getSerializableExtra("pushMessage");
+        }
+        mFromPush = intent.getBooleanExtra("fromPush", false);
     }
 
     private void initView() {
@@ -68,6 +88,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 UserManager.getInstance().setUser(user);
                 // 发送广播
                 seedLoginBroadcast();
+                if(mFromPush) {
+                    Intent intent = new Intent(LoginActivity.this, PushMessgeActivity.class);
+                    intent.putExtra("pushMessage", mPushMessage);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
                 finish();
             }
 
