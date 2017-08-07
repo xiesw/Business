@@ -21,10 +21,12 @@ import com.halove.business.entity.update.UpdateEntity;
 import com.halove.business.manager.UserManager;
 import com.halove.business.net.http.RequestCenter;
 import com.halove.business.service.UpdateService;
+import com.halove.business.share.ShareDialog;
 import com.halove.business.ui.Dialog.CommonDialog;
 import com.halove.business.zxing.util.Util;
 import com.halove.core.okhttp.listener.DisposeDataListener;
 
+import cn.sharesdk.framework.Platform;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -104,9 +106,24 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_qrcode_view:
                 // TODO: 2017/8/6 生成二维码
                 break;
+            case R.id.share_imooc_view:
+                showShareDialog();
+                break;
             default:
                 break;
         }
+    }
+
+    private void showShareDialog() {
+        ShareDialog dialog = new ShareDialog(getActivity());
+        dialog.setShareType(Platform.SHARE_IMAGE);
+        dialog.setShareTitle("慕课网");
+        dialog.setShareTitleUrl("http://www.baidu.com");
+        dialog.setShareText("慕课网");
+        dialog.setShareSite("imooc");
+        dialog.setShareSiteUrl("http://www.baidu.com");
+        //dialog.setSharePhoto(Environment.getExternalStorageDirectory() + "/test2.jpg");
+        dialog.show();
     }
 
     // 发送版本检查请求

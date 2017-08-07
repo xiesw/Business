@@ -3,6 +3,8 @@ package com.halove.business.activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.halove.business.R;
@@ -15,12 +17,13 @@ import java.util.ArrayList;
  *
  * @function 显示产品大图
  */
-public class PhotoViewActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public class PhotoViewActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
     public static final String TAG = PhotoViewActivity.class.getSimpleName();
     public static final String PHOTO_LIST = "photo_list";
     protected ViewPager mPhotoPager;
     protected TextView mIndictoreView;
+    private ImageView mShareView;
 
     private PhotoViewAdapter mViewAdapter;
     private ArrayList<String> mPhotoLists;
@@ -46,6 +49,8 @@ public class PhotoViewActivity extends AppCompatActivity implements ViewPager.On
     private void initView() {
         mPhotoPager = (ViewPager) findViewById(R.id.photo_view_pager);
         mIndictoreView = (TextView) findViewById(R.id.indictore_view);
+        mShareView = (ImageView) findViewById(R.id.share_view);
+        mShareView.setOnClickListener(this);
     }
 
     @Override
@@ -62,6 +67,11 @@ public class PhotoViewActivity extends AppCompatActivity implements ViewPager.On
 
     @Override
     public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

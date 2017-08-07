@@ -31,17 +31,11 @@
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-    
+                
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".activity.TestActivity"/>
-        <!-- 二维码相关 -->
-        <activity
-            android:name=".zxing.app.CaptureActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".activity.SettingActivity">
         </activity>
         
@@ -55,6 +49,43 @@
         </activity>
         <activity android:name=".activity.PhotoViewActivity">
         </activity>
+        
+        <!-- ShareSDK start-->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            
+            <intent-filter>
+                <data android:scheme="tencent100371282"/>
+                <action android:name="android.intent.action.VIEW"/>
+                
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <!--<meta-data
+            android:name="Mob-AppKey"
+            android:value="1ffd018a7d5fc"/>
+        <meta-data
+            android:name="Mob-AppSecret"
+            android:value="d467072e90847bc776f642224f16766f"/>-->
+        <!-- ShareSDK end-->
+    
+        <!-- 二维码相关 -->
+        <activity
+            android:name=".zxing.app.CaptureActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
     </application>
 
 </manifest>
