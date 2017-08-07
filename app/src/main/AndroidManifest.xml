@@ -213,6 +213,10 @@
     
         <!-- ************* JPush end ************* -->
 
+        <!-- ************* 友盟 start ************* -->
+        <meta-data android:value="YOUR_APP_KEY" android:name="598869ca2ae85b3452001551"/>
+        <meta-data android:value="Channel ID" android:name="${UMENG_CHANNEL_VALUE}"/>
+        <!-- ************* 友盟 end ************* -->
     </application>
 
 </manifest>
