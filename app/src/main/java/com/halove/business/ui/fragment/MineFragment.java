@@ -27,7 +27,6 @@ import com.halove.business.zxing.util.Util;
 import com.halove.core.okhttp.listener.DisposeDataListener;
 import com.halove.core.updater.Updater;
 import com.halove.core.updater.UpdaterConfig;
-import com.halove.core.utils.LogUtil;
 
 import cn.sharesdk.framework.Platform;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -158,10 +157,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                             .update_new_version), getString(R.string.update_title), getString(R
                             .string.update_install), getString(R.string.cancel), new CommonDialog
                             .DialogClickListener() {
-                            @Override
-                            public void onDialogClick() {
-                                startDownLoadApk(updateEntity.data.apkurl);
-                            }
+                        @Override
+                        public void onDialogClick() {
+                            startDownLoadApk(updateEntity.data.apkurl);
+                        }
                     });
                     dialog.show();
                 } else {
@@ -185,12 +184,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
      * @param url
      */
     private void startDownLoadApk(String url) {
-        LogUtil.e("xieshangwu", url);
-
         UpdaterConfig config = new UpdaterConfig.Builder(getActivity()).setTitle(getResources()
                 .getString(R.string.app_name))
                 .setDescription(getString(R.string.system_download_description))
-                .setFileUrl("http://121.42.181.106:8080/examples/business/business.apk")
+                .setFileUrl(url)
                 .setCanMediaScanner(true)
                 .build();
         Updater.get().showLog(true).download(config);

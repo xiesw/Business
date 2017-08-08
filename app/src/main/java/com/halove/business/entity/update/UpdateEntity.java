@@ -12,10 +12,19 @@ public class UpdateEntity extends BaseEntity {
     public String emsg;
     public DataBean data;
 
-
     public static class DataBean {
 
         public int currentVersion;
         public String apkurl;
+
+        @Override
+        public String toString() {
+            return "DataBean{" + "currentVersion=" + currentVersion + ", apkurl='" + apkurl + '\'' + '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "UpdateEntity{" + "ecode=" + ecode + ", emsg='" + emsg + '\'' + ", data=" + data + '}';
     }
 }
