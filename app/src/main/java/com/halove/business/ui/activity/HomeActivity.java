@@ -1,4 +1,4 @@
-package com.halove.business.activity;
+package com.halove.business.ui.activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import com.halove.business.R;
 import com.halove.business.base.BaseActivity;
-import com.halove.business.fragment.HomeFragment;
-import com.halove.business.fragment.MessageFragment;
-import com.halove.business.fragment.MineFragment;
+import com.halove.business.ui.fragment.HomeFragment;
+import com.halove.business.ui.fragment.MessageFragment;
+import com.halove.business.ui.fragment.MineFragment;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener {
     public static final String TAG = HomeActivity.class.getSimpleName();

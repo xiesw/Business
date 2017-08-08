@@ -1,4 +1,4 @@
-package com.halove.business.adapter;
+package com.halove.business.ui.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

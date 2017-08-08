@@ -1,4 +1,4 @@
-package com.halove.business.fragment;
+package com.halove.business.ui.fragment;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -15,17 +15,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.halove.business.R;
-import com.halove.business.activity.LoginActivity;
-import com.halove.business.activity.SettingActivity;
 import com.halove.business.base.BaseFragment;
 import com.halove.business.entity.update.UpdateEntity;
 import com.halove.business.manager.UserManager;
 import com.halove.business.net.http.RequestCenter;
-import com.halove.business.service.UpdateService;
 import com.halove.business.share.ShareDialog;
 import com.halove.business.ui.Dialog.CommonDialog;
+import com.halove.business.ui.activity.LoginActivity;
+import com.halove.business.ui.activity.SettingActivity;
 import com.halove.business.zxing.util.Util;
 import com.halove.core.okhttp.listener.DisposeDataListener;
+import com.halove.core.updater.Updater;
+import com.halove.core.updater.UpdaterConfig;
+import com.halove.core.utils.LogUtil;
 
 import cn.sharesdk.framework.Platform;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -141,7 +143,6 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         dialog.setShareText("慕课网");
         dialog.setShareSite("imooc");
         dialog.setShareSiteUrl("http://www.baidu.com");
-        //dialog.setSharePhoto(Environment.getExternalStorageDirectory() + "/test2.jpg");
         dialog.show();
     }
 
@@ -150,20 +151,17 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         RequestCenter.checkVersion(new DisposeDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
-                UpdateEntity updateEntity = (UpdateEntity) responseObj;
+                final UpdateEntity updateEntity = (UpdateEntity) responseObj;
                 // 判断版本号大小
                 if(Util.getVersionCode(getActivity()) < updateEntity.data.currentVersion) {
                     CommonDialog dialog = new CommonDialog(getActivity(), getString(R.string
                             .update_new_version), getString(R.string.update_title), getString(R
                             .string.update_install), getString(R.string.cancel), new CommonDialog
                             .DialogClickListener() {
-
-
-                        @Override
-                        public void onDialogClick() {
-                            Intent intent = new Intent(getActivity(), UpdateService.class);
-                            getActivity().startService(intent);
-                        }
+                            @Override
+                            public void onDialogClick() {
+                                startDownLoadApk(updateEntity.data.apkurl);
+                            }
                     });
                     dialog.show();
                 } else {
@@ -179,6 +177,23 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
 
             }
         });
+    }
+
+    /**
+     * 下载更新apk
+     *
+     * @param url
+     */
+    private void startDownLoadApk(String url) {
+        LogUtil.e("xieshangwu", url);
+
+        UpdaterConfig config = new UpdaterConfig.Builder(getActivity()).setTitle(getResources()
+                .getString(R.string.app_name))
+                .setDescription(getString(R.string.system_download_description))
+                .setFileUrl("http://121.42.181.106:8080/examples/business/business.apk")
+                .setCanMediaScanner(true)
+                .build();
+        Updater.get().showLog(true).download(config);
     }
 
     private void registerLoginBroadcast() {

@@ -1,4 +1,4 @@
-package com.halove.business.adapter;
+package com.halove.business.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.halove.business.R;
-import com.halove.business.activity.PhotoViewActivity;
+import com.halove.business.ui.activity.PhotoViewActivity;
 import com.halove.business.entity.recommand.RecommandValue;
 import com.halove.core.imageloader.ImageLoaderManager;
 import com.halove.core.utils.Utils;

@@ -44,7 +44,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.HomeActivity"
+            android:name=".ui.activity.HomeActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
@@ -54,21 +54,21 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.TestActivity"/>
-        <activity android:name=".activity.SettingActivity">
+        <activity android:name=".ui.activity.TestActivity"/>
+        <activity android:name=".ui.activity.SettingActivity">
         </activity>
         
-        <service
-            android:name=".service.UpdateService"
-            android:enabled="true"
-            android:exported="true">
-        </service>
-        
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".ui.activity.LoginActivity">
         </activity>
-        <activity android:name=".activity.PhotoViewActivity">
+        <activity android:name=".ui.activity.PhotoViewActivity">
         </activity>
     
+        <receiver android:name="com.halove.core.updater.ApkInstallReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED" />
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+            </intent-filter>
+        </receiver>
     
         
         <!-- ShareSDK start -->

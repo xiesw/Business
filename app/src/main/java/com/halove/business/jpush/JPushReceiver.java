@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.halove.business.activity.HomeActivity;
-import com.halove.business.activity.LoginActivity;
+import com.halove.business.ui.activity.HomeActivity;
+import com.halove.business.ui.activity.LoginActivity;
 import com.halove.business.manager.UserManager;
 import com.halove.core.utils.ResponseEntityToModule;
 import com.halove.core.utils.Utils;

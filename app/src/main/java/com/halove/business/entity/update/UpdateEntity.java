@@ -16,5 +16,6 @@ public class UpdateEntity extends BaseEntity {
     public static class DataBean {
 
         public int currentVersion;
+        public String apkurl;
     }
 }

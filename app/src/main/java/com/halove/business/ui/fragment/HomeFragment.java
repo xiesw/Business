@@ -1,4 +1,4 @@
-package com.halove.business.fragment;
+package com.halove.business.ui.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,12 +12,13 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.halove.business.Constant;
 import com.halove.business.R;
-import com.halove.business.activity.PhotoViewActivity;
-import com.halove.business.adapter.HomeListAdapter;
+import com.halove.business.ui.activity.PhotoViewActivity;
+import com.halove.business.ui.adapter.HomeListAdapter;
 import com.halove.business.base.BaseFragment;
 import com.halove.business.entity.recommand.BaseRecommandEntity;
 import com.halove.business.entity.recommand.HeadEntity;
@@ -114,7 +115,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 // 扫码处理逻辑
                 if(resultCode == Activity.RESULT_OK) {
                     String result = data.getStringExtra("SCAN_RESULT");
-                    // TODO: 2017/8/4 使用浏览器打开返回的连接
+                    Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
                 }
                 break;
             default:

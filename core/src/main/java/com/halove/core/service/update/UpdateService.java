@@ -1,4 +1,4 @@
-package com.halove.business.service;
+package com.halove.core.service.update;
 
 import android.app.Service;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.halove.business.activity;
+package com.halove.business.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.halove.business.R;
-import com.halove.business.adapter.PhotoViewAdapter;
+import com.halove.business.ui.adapter.PhotoViewAdapter;
 import com.halove.business.base.BaseActivity;
 
 import java.util.ArrayList;

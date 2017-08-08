@@ -1,4 +1,4 @@
-package com.halove.business.activity;
+package com.halove.business.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

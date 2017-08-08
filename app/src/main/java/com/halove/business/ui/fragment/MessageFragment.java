@@ -1,4 +1,4 @@
-package com.halove.business.fragment;
+package com.halove.business.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
