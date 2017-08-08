@@ -1,16 +1,16 @@
 package com.halove.business.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.halove.business.R;
+import com.halove.business.base.BaseActivity;
 import com.halove.business.utils.SharedPreferenceManager;
 
-public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
+public class SettingActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = SettingActivity.class.getSimpleName();
 
     /**

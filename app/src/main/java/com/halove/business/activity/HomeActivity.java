@@ -109,7 +109,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 mMineView.setBackgroundResource(R.drawable.comui_tab_person);
 
                 // 隐藏其他两个Fragment
-                hideFragment(mMessageFragment, fragmentTransaction);
+                hideFragment(mMineFragment, fragmentTransaction);
                 hideFragment(mHomeFragment, fragmentTransaction);
                 // 将我们HomeFragment显示出来
                 if(mMessageFragment == null) {

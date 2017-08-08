@@ -59,7 +59,14 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         mContentView = inflater.inflate(R.layout.fragment_mine, container, false);
         initView();
         registerLoginBroadcast();
+
         return mContentView;
+    }
+
+
+    @Override
+    public int getStatusBarColor() {
+        return R.color.white;
     }
 
     @Override

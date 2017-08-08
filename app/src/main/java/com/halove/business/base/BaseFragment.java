@@ -18,9 +18,35 @@ public class BaseFragment extends Fragment {
     public static final int EXTERNAL_STORAGE_PERIMSSION = 1;
     public static final int WRITE_CONTACTS = 2;
 
+    public static final int NO_COLOR = -1;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarColor();
+
+    }
+
+    public int getStatusBarColor() {
+        return NO_COLOR;
+    }
+
+    // 解决沉浸式状态栏
+    private void setStatusBarColor() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if(getStatusBarColor() != NO_COLOR) {
+                getActivity().getWindow()
+                        .setStatusBarColor(getResources().getColor(getStatusBarColor()));
+            }
+        }
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(!hidden) {
+            setStatusBarColor();
+        }
     }
 
     /**

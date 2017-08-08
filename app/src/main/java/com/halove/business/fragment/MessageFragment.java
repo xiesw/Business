@@ -32,6 +32,11 @@ public class MessageFragment extends BaseFragment {
         return mContentView;
     }
 
+    @Override
+    public int getStatusBarColor() {
+        return R.color.color_e3e3e3;
+    }
+
     private void initView() {
         mMessageView = (TextView) mContentView.findViewById(R.id.tip_message_view);
         mImoocView = (TextView) mContentView.findViewById(R.id.tip_imooc_view);

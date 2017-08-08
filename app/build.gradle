@@ -11,6 +11,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        // 1.第一步
         manifestPlaceholders = [UMENG_CHANNEL_VALUE: "imooc"]
     }
 
@@ -19,6 +20,7 @@ android {
 
         }
 
+        // 2.把.jks签名文件拷到同级目录下
         release {
             storeFile file("business.jks")
             storePassword "xie7561331"
@@ -34,7 +36,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
 
-            //指定我们release包的输出文件名就是我们的渠道名字
+            //3.指定我们release包的输出文件名就是我们的渠道名字,去掉打出来的包的前缀"app"
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
                     def outputFile = output.outputFile
@@ -48,6 +50,8 @@ android {
         }
     }
 
+
+    //4. 添加渠道
     productFlavors {
         imooc {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "imooc"]
@@ -57,6 +61,7 @@ android {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "googleplayer"]
         }
 
+        //有各种新的渠道安装这种写法就可以添加了
         baidu {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
         }
@@ -88,4 +93,6 @@ dependencies {
 
     // 友盟统计
     compile 'com.umeng.analytics:analytics:latest.integration'
+    // 沉浸式状态栏
+    compile 'com.gyf.barlibrary:barlibrary:2.2.7'
 }

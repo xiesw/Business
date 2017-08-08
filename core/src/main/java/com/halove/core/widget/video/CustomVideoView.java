@@ -221,7 +221,7 @@ public class CustomVideoView extends RelativeLayout implements View.OnClickListe
      * 停止状态
      */
     public void stop() {
-        LogUtil.ee(TAG, "do stop");
+        LogUtil.e(TAG, "do stop");
         // 清空
         if(mMediaPlayer != null) {
             mMediaPlayer.reset();
@@ -419,7 +419,7 @@ public class CustomVideoView extends RelativeLayout implements View.OnClickListe
 
     @Override
     protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
-        LogUtil.ee(TAG, "onVisibilityChanged" + visibility);
+        LogUtil.e(TAG, "onVisibilityChanged" + visibility);
         super.onVisibilityChanged(changedView, visibility);
 
         if(visibility == VISIBLE && mPlayerState == STATE_PLAYING) {
@@ -470,7 +470,7 @@ public class CustomVideoView extends RelativeLayout implements View.OnClickListe
      */
     @Override
     public boolean onError(MediaPlayer mp, int what, int extra) {
-        LogUtil.ee(TAG, "error");
+        LogUtil.e(TAG, "error");
         this.mPlayerState = STATE_ERROR;
         if(mCurrentCount >= LOAD_TOTAL_COUNT) {
             if(mListener != null) {
@@ -487,7 +487,7 @@ public class CustomVideoView extends RelativeLayout implements View.OnClickListe
      */
     @Override
     public void onPrepared(MediaPlayer mp) {
-        LogUtil.ee(TAG, "prepare");
+        LogUtil.e(TAG, "prepare");
 
         mMediaPlayer = mp;
         if(mMediaPlayer != null) {
@@ -508,14 +508,14 @@ public class CustomVideoView extends RelativeLayout implements View.OnClickListe
      */
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-        LogUtil.ee(TAG, "onSurfaceTextureAvailable");
+        LogUtil.e(TAG, "onSurfaceTextureAvailable");
         videoSurface = new Surface(surface);
         load();
     }
 
     @Override
     public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
-        LogUtil.ee(TAG, "onSurfaceTextureSizeChanged");
+        LogUtil.e(TAG, "onSurfaceTextureSizeChanged");
     }
 
     @Override

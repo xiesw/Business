@@ -3,12 +3,12 @@ package com.halove.business.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.halove.business.R;
+import com.halove.business.base.BaseActivity;
 import com.halove.business.entity.UserEntity;
 import com.halove.business.jpush.PushMessage;
 import com.halove.business.jpush.PushMessgeActivity;
@@ -17,7 +17,7 @@ import com.halove.business.net.http.RequestCenter;
 import com.halove.core.okhttp.listener.DisposeDataListener;
 import com.halove.core.utils.LogUtil;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
     public static final String TAG = LoginActivity.class.getSimpleName();
     public static final String LOGIN_ACTION = "com.halove.action.ACTION_LOGIN";
 
@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         RequestCenter.login(userName, password, new DisposeDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
-                LogUtil.ee(TAG, "success");
+                LogUtil.e(TAG, "success");
 
                 // 拿到用户信息
                 UserEntity user = (UserEntity) responseObj;
@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onFailure(Object reasonObj) {
-                LogUtil.ee(TAG, "fail");
+                LogUtil.e(TAG, "fail");
 
             }
         });

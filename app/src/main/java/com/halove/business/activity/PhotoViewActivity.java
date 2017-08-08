@@ -2,13 +2,13 @@ package com.halove.business.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.halove.business.R;
 import com.halove.business.adapter.PhotoViewAdapter;
+import com.halove.business.base.BaseActivity;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @function 显示产品大图
  */
-public class PhotoViewActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
+public class PhotoViewActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
     public static final String TAG = PhotoViewActivity.class.getSimpleName();
     public static final String PHOTO_LIST = "photo_list";

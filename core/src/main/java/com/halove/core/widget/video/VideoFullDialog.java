@@ -81,7 +81,7 @@ public class VideoFullDialog extends Dialog implements VideoPlayerListener {
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        LogUtil.ee(TAG, "onWindowFocusChanged");
+        LogUtil.e(TAG, "onWindowFocusChanged");
         if(!hasFocus) {
             //未获取焦点
             mPositon = mVideoView.getCurrentPositon();
@@ -100,7 +100,7 @@ public class VideoFullDialog extends Dialog implements VideoPlayerListener {
 
     @Override
     public void dismiss() {
-        LogUtil.ee(TAG, "dismiss");
+        LogUtil.e(TAG, "dismiss");
         mParentView.removeView(mVideoView);
         super.dismiss();
     }

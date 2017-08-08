@@ -58,6 +58,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         requestRecommandData();
     }
 
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle
@@ -65,6 +67,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         mContentView = inflater.inflate(R.layout.fragment_home, container, false);
         initView();
         return mContentView;
+    }
+
+    @Override
+    public int getStatusBarColor() {
+        return R.color.color_fed952;
     }
 
     private void initView() {

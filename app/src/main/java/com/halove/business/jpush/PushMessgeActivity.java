@@ -2,14 +2,14 @@ package com.halove.business.jpush;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.halove.business.R;
+import com.halove.business.base.BaseActivity;
 import com.halove.core.activity.AdBrowserActivity;
 
-public class PushMessgeActivity extends AppCompatActivity {
+public class PushMessgeActivity extends BaseActivity {
 
     private static final String TAG = PushMessgeActivity.class.getSimpleName();
     /**
